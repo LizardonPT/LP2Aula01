@@ -5,10 +5,10 @@ namespace CatSimulator
 {
     public class Cat
     {
-        private string _name;
-        private int _energy;
-        private Mood _moodStatus;
-        private Feed _feedStatus;
+        public string Name { get; private set; }
+        public int Energy { get; private set; }
+        public Mood MoodStatus { get; private set; }
+        public Feed FeedStatus { get; private set; }
 
         private Random random;
 
@@ -19,23 +19,18 @@ namespace CatSimulator
 
         public Cat(string name, int energy, Mood moodStatus, Feed feedStatus) : this()
         {
-            _name = name;
-            _energy = energy;
-            _moodStatus = moodStatus;
-            _feedStatus = feedStatus;
+            Name = name;
+            Energy = energy;
+            MoodStatus = moodStatus;
+            FeedStatus = feedStatus;
         }
 
         public Cat(string name) : this()
         {
-            _name = name;
-            _energy = random.Next(1, 21);
-            _moodStatus = (Mood)random.Next(0, Enum.GetNames(typeof(Mood)).Length);
-            _feedStatus = (Feed)random.Next(0, Enum.GetNames(typeof(Feed)).Length);
+            Name = name;
+            Energy = random.Next(1, 21);
+            MoodStatus = (Mood)random.Next(0, Enum.GetNames(typeof(Mood)).Length);
+            FeedStatus = (Feed)random.Next(0, Enum.GetNames(typeof(Feed)).Length);
         }
-
-        public string GetName() => _name;
-        public int GetEnergy() => _energy;
-        public Mood GetMoodStatus() => _moodStatus;
-        public Feed GetFeedStatus() => _feedStatus;
     }
 }
